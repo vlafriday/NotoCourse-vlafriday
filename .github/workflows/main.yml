@@ -1,24 +1,25 @@
 name: Deploy to Pages
 
-   
-on: [workflow_dispatch]
-#  schedule:
-#    - cron: "*/20 * * * *" 				  
+on:
+  workflow_dispatch:
+  
 jobs:
   generate-restruct-update:
     runs-on: ubuntu-latest
     
     steps:
-        # Download packages
+      # Download packages
       - name: Submodule Update
         run: |
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt install ./google-chrome-stable_current_amd64.deb
           sudo apt-get update
+      
       - name: Set up Node.js 16
         uses: actions/setup-node@v2
         with:
-          node-version: 16		   		 					  
+          node-version: 16
+          
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -46,8 +47,8 @@ jobs:
 
       - name: Clean structuring
         run: |
-            cd ${GITHUB_WORKSPACE}/dist/output/
-            python struct.py
+          cd ${GITHUB_WORKSPACE}/dist/output/
+          python struct.py
 
       - name: List files in the repository
         run: ls ${GITHUB_WORKSPACE}/dist/output
@@ -55,8 +56,7 @@ jobs:
       - name: Deploy to Pages
         uses: JamesIves/github-pages-deploy-action@4.2.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: main
-          FOLDER: dist/output
-          CLEAN: true
-          WORKSPACE: ${{ github.workspace }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          folder: dist/output
+          clean: true
