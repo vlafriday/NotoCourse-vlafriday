@@ -531,13 +531,13 @@ mention token. */
 /* - Disable the bouncy scrolling in OSX. */
 /* - Let the main scroller to handle scrolling */
 html.notion-html, body.notion-body, #notion-app {
-    height: 90vh;
+    height: 100vh;
     overflow: hidden;
     position: relative;
     background-color: transparent
     }
 .notion-app-inner {
-    height: 90%
+    height: 100%
     }
 html.notion-mobile:not(.notion-front-page) div:not([contenteditable]) {
     -webkit-user-select: none
@@ -1476,7 +1476,7 @@ table > tr {
         font-size: 16px
         }
     #notion-app .DayPicker-Month, #notion-app .DayPicker {
-        width: 90%
+        width: 100%
         }
     #notion-app .DayPicker-Weekday, #notion-app .DayPicker-Day {
         flex-grow: 1
