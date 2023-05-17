@@ -59,3 +59,4 @@ jobs:
           BRANCH: main
           FOLDER: dist/output
           CLEAN: true
+          WORKSPACE: ${{ github.workspace }}
